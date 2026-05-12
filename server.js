@@ -30,7 +30,7 @@ function saveData(data) {
 }
 
 // ── Global daily rate limit ─────────────────────────────────
-const DAILY_LIMIT = 100;
+const DAILY_LIMIT = 30;
 
 let dailyCount    = 0;
 let lastResetDate = new Date().toISOString().slice(0, 10);
