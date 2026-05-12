@@ -30,7 +30,17 @@
     {"d":28, "dt":"Apr 18", "c":["KV Cache","World Models"],                       "a":"Why context efficiency is the next AI cost battle",              "u":"World model AI in autonomous industrial planning",            "s":"The memory trick that makes long-context AI affordable — and AI that simulates before acting."},
     {"d":29, "dt":"Apr 19", "c":["Liquid Neural Networks","RAFT"],                 "a":"Adaptive AI — beyond static model weights",                      "u":"RAFT for enterprise RAG quality improvement",                 "s":"Networks that adapt in real-time — and fine-tuning specifically for retrieval-heavy tasks."},
     {"d":30, "dt":"Apr 20", "c":["Multi-Model Orchestration","AI Super App"],      "a":"GPT-5.5 launch — market implications",                           "u":"Hallucination-resistant models in financial services",         "s":"Coordinating multiple AI models for complex tasks — and the platform consolidation wave."},
-    {"d":31, "dt":"Apr 26", "c":["AI Governance Frameworks","Foundation Model APIs"], "a":"AI governance becoming a board-level agenda",                 "u":"AI centre of excellence — build vs buy vs partner",           "s":"Structural frameworks for managing AI risk — and the API economy underpinning enterprise AI."}
+    {"d":31, "dt":"Apr 26", "c":["Context Caching","AI Co-Scientist"],               "a":"", "u":"", "s":""},
+    {"d":32, "dt":"Apr 27", "c":["Agent-to-Agent (A2A) Protocol","Neuromorphic Computing"], "a":"", "u":"", "s":""},
+    {"d":33, "dt":"Apr 28", "c":["Large Action Models (LAMs)","AI Vendor Lock-In"],  "a":"", "u":"", "s":""},
+    {"d":35, "dt":"Apr 30", "c":["AI Governance Frameworks","Decision Velocity"],    "a":"", "u":"", "s":""},
+    {"d":36, "dt":"May 1",  "c":["AI Identity & Non-Human Credentials","AI Stack Lock-In"], "a":"", "u":"", "s":""},
+    {"d":38, "dt":"May 3",  "c":["Shadow AI","Forward-Deployed Engineering"],        "a":"", "u":"", "s":""},
+    {"d":40, "dt":"May 5",  "c":["Agentic Resilience","Private Equity AI Deployment"], "a":"", "u":"", "s":""},
+    {"d":42, "dt":"May 7",  "c":["AI ROI Gap","AI Control Tower"],                   "a":"", "u":"", "s":""},
+    {"d":43, "dt":"May 8",  "c":["AI Deployment Layer","Agentic Culture Gap"],       "a":"", "u":"", "s":""},
+    {"d":44, "dt":"May 9",  "c":["AI Operations (AIOps)","AI Depth vs AI Access"],   "a":"", "u":"", "s":""},
+    {"d":45, "dt":"May 10", "c":["Tokenization & Vocabulary","Inference Latency"],   "a":"", "u":"", "s":""}
   ],
   "topics": [
     {
