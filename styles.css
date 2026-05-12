@@ -330,7 +330,7 @@ main {
 
 .dc-panels {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .dc-panel {
@@ -351,6 +351,22 @@ main {
   color: var(--ink2);
   line-height: 1.5;
   margin-bottom: 10px;
+}
+
+.practical-block {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.55;
+}
+.practical-divider {
+  height: 0.5px;
+  background: var(--border);
+  margin: 8px 0;
+}
+.practical-empty {
+  font-size: 12px;
+  color: var(--ink3);
+  font-style: italic;
 }
 
 /* ── BUTTONS ── */
@@ -472,7 +488,7 @@ main {
   .kpi-row                 { grid-template-columns: repeat(2, 1fr); }
   .two-col                 { grid-template-columns: 1fr; }
   .dc-panels               { grid-template-columns: 1fr; }
-  .dc-panel                { border-right: none; border-bottom: 0.5px solid var(--border); }
+  .dc-panel                { border-right: none; border-bottom: 0.5px solid var(--border); padding: 14px 16px; }
   .dc-panel:last-child     { border-bottom: none; }
   .topics-grid             { grid-template-columns: 1fr; }
   .days-controls           { flex-direction: column; align-items: flex-start; gap: 12px; }

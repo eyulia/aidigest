@@ -111,37 +111,46 @@ function buildDays(days) {
     const esc = s => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
     const cPrompt = esc(`Give a current, practical briefing on "${d.c[0]}" and "${d.c[1]}" and their enterprise implications in 2025.`);
-    const aPrompt = esc(`Summarise the latest enterprise perspective on this topic: "${d.a}". What do executives need to know right now?`);
-    const uPrompt = esc(`Give a detailed business case analysis for: "${d.u}". Include ROI considerations, implementation challenges, and the vendor landscape in 2025.`);
+
+    // Practical panel: combine article + use case if present
+    const practicalParts = [d.a, d.u].filter(Boolean);
+    const pPrompt = practicalParts.length > 0
+      ? esc(`Give an enterprise executive briefing on: ${practicalParts.join(' and ')}. Include current relevance and strategic implications in 2025.`)
+      : esc(`Give a practical enterprise briefing on how "${d.c[0]}" and "${d.c[1]}" are being applied in real business contexts in 2025.`);
+
+    let practicalHtml;
+    if (d.a && d.u) {
+      practicalHtml = `<div class="practical-block">${d.a}</div>
+        <div class="practical-divider"></div>
+        <div class="practical-block">${d.u}</div>`;
+    } else if (d.a || d.u) {
+      practicalHtml = `<div class="practical-block">${d.a || d.u}</div>`;
+    } else {
+      practicalHtml = `<div class="practical-empty">Coming soon</div>`;
+    }
 
     el.innerHTML = `
 <div class="dc-head" onclick="tog(${d.d})">
   <div class="dc-num">D${String(d.d).padStart(2, '0')}</div>
   <div class="dc-mid">
     <div class="dc-tags">${cTags}</div>
-    <div class="dc-sub">${d.dt} · ${d.s}</div>
+    <div class="dc-sub">${d.dt}${d.s ? ' · ' + d.s : ''}</div>
   </div>
   <div class="dc-chev">▾</div>
 </div>
 <div class="dc-body">
   <div class="dc-panels">
     <div class="dc-panel">
-      <div class="panel-label">CONCEPTS</div>
+      <div class="panel-label">AI CONCEPTS</div>
       <div class="panel-content">${d.c[0]} &amp; ${d.c[1]}</div>
       <button class="dive-btn" onclick="callAI('ai-c-${d.d}', '${cPrompt}', this)">Deep dive ↗</button>
       <div id="ai-c-${d.d}" class="ai-box"></div>
     </div>
     <div class="dc-panel">
-      <div class="panel-label">ARTICLE THEME</div>
-      <div class="panel-content">${d.a}</div>
-      <button class="dive-btn" onclick="callAI('ai-a-${d.d}', '${aPrompt}', this)">Latest take ↗</button>
-      <div id="ai-a-${d.d}" class="ai-box"></div>
-    </div>
-    <div class="dc-panel">
-      <div class="panel-label">USE CASE</div>
-      <div class="panel-content">${d.u}</div>
-      <button class="dive-btn" onclick="callAI('ai-u-${d.d}', '${uPrompt}', this)">Analyse ↗</button>
-      <div id="ai-u-${d.d}" class="ai-box"></div>
+      <div class="panel-label">PRACTICAL</div>
+      <div class="panel-content">${practicalHtml}</div>
+      <button class="dive-btn" onclick="callAI('ai-p-${d.d}', '${pPrompt}', this)">Explore ↗</button>
+      <div id="ai-p-${d.d}" class="ai-box"></div>
     </div>
   </div>
 </div>`;
