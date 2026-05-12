@@ -160,10 +160,13 @@ Rules:
     });
 
     const result = await upstream.json();
-    console.log('Claude raw response:', JSON.stringify(result).slice(0, 500));
 
     if (result.error) {
-      return res.status(500).json({ error: `Anthropic API error: ${result.error.message || result.error.type}` });
+      return res.status(500).json({ error: `Anthropic API error: ${result.error.message || result.error.type}`, detail: result.error });
+    }
+
+    if (!result.content) {
+      return res.status(500).json({ error: 'Unexpected API response', detail: result });
     }
 
     const text = result.content?.[0]?.text || '';
