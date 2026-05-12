@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Fluency / Daily Digest</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23c96442'/><text x='50%25' y='54%25' font-family='system-ui' font-size='13' font-weight='600' fill='white' text-anchor='middle' dominant-baseline='middle'>AI</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="wordmark">
+    <div class="wordmark-icon">AI</div>
+    <span class="wordmark-text">Fluency</span>
+    <span class="wordmark-sep">/</span>
+    <span class="wordmark-sub">Daily Digest</span>
+  </div>
+  <div class="header-pill">Started March 22, 2025</div>
+</header>
+
+<!-- ── NAV ── -->
+<nav>
+  <button class="tab on" onclick="show('overview', this)">
+    <span class="tab-dot"></span>Overview
+  </button>
+  <button class="tab" onclick="show('days', this)">
+    <span class="tab-dot"></span>Daily sessions
+  </button>
+  <button class="tab" onclick="show('topics', this)">
+    <span class="tab-dot"></span>Deep dives
+  </button>
+</nav>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- OVERVIEW -->
+  <div class="sec on" id="sec-overview">
+
+    <div class="page-title">Your AI learning journey</div>
+    <div class="page-sub">Structured daily sessions for enterprise executives — concepts, curated news, and business use cases.</div>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-n" id="kpi-sessions">—</div>
+        <div class="kpi-l">Sessions completed</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-n" id="kpi-concepts">—</div>
+        <div class="kpi-l">Concepts covered</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-n" id="kpi-usecases">—</div>
+        <div class="kpi-l">Use cases explored</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-n" id="kpi-streak">—</div>
+        <div class="kpi-l">Streak</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+
+      <div class="card">
+        <div class="card-label">COVERAGE BY DOMAIN</div>
+        <div class="bar-row">
+          <div class="bar-name">Foundations</div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+          <div class="bar-n">14</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Architecture</div>
+          <div class="bar-track"><div class="bar-fill" style="width:86%"></div></div>
+          <div class="bar-n">12</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Enterprise AI</div>
+          <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+          <div class="bar-n">10</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Safety &amp; risk</div>
+          <div class="bar-track"><div class="bar-fill" style="width:57%"></div></div>
+          <div class="bar-n">8</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Society &amp; law</div>
+          <div class="bar-track"><div class="bar-fill" style="width:43%"></div></div>
+          <div class="bar-n">6</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">HOW EACH SESSION WORKS</div>
+        <div class="principle-list">
+          <div class="principle">
+            <div class="p-icon purple">◈</div>
+            <div>
+              <div class="p-title">Two new concepts</div>
+              <div class="p-desc">Carefully sequenced to build on prior sessions — no repeats, ever.</div>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="p-icon teal">◎</div>
+            <div>
+              <div class="p-title">One curated article</div>
+              <div class="p-desc">Lab breakthroughs and enterprise adoption stories, selected for executive relevance.</div>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="p-icon coral">◇</div>
+            <div>
+              <div class="p-title">One business use case</div>
+              <div class="p-desc">Real enterprise context — procurement, vendor evaluation, implementation, ROI.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /overview -->
+
+  <!-- DAILY SESSIONS -->
+  <div class="sec" id="sec-days">
+    <div class="days-controls">
+      <div>
+        <div class="page-title">Daily sessions</div>
+        <div class="page-sub" style="margin-bottom:0">Expand any session — then deep dive with a live AI briefing.</div>
+      </div>
+      <div class="days-controls-right">
+        <div class="pill-group">
+          <button class="pill on" onclick="filt('all', this)">All</button>
+          <button class="pill" onclick="filt('recent', this)">Recent 7</button>
+        </div>
+        <button class="generate-btn" id="generate-btn" onclick="generateDigest()">New digest +</button>
+      </div>
+    </div>
+    <div class="gen-status-wrap">
+      <span id="generate-status" class="gen-status"></span>
+    </div>
+    <div class="day-list" id="day-list"></div>
+  </div><!-- /days -->
+
+  <!-- DEEP DIVES -->
+  <div class="sec" id="sec-topics">
+    <div class="page-title">Deep dives</div>
+    <div class="page-sub">Key Q&amp;A threads that warranted extended exploration — each with a live AI briefing.</div>
+    <div class="topics-grid" id="topics-grid"></div>
+  </div><!-- /topics -->
+
+</main>
+
+<!-- ── APP ── -->
+<script src="app.js"></script>
+
+</body>
+</html>

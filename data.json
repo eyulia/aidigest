@@ -1,0 +1,73 @@
+{
+  "days": [
+    {"d":1,  "dt":"Mar 22", "c":["What is AI","AI vs Machine Learning"],          "a":"2025 AI landscape overview",                                    "u":"AI in enterprise strategy briefings",                         "s":"The difference between AI as umbrella and ML as its most important subset."},
+    {"d":2,  "dt":"Mar 23", "c":["Neural Networks","Large Language Models"],       "a":"How LLMs reshape knowledge work",                               "u":"LLMs for legal document review",                              "s":"The architecture from neurons to transformers that makes modern AI possible."},
+    {"d":3,  "dt":"Mar 24", "c":["Training Data","Parameters"],                    "a":"Data quality as competitive moat",                              "u":"Proprietary data strategy in financial services",             "s":"What AI actually learns — data and the numerical weights that store it."},
+    {"d":4,  "dt":"Mar 25", "c":["AI Agents","Inference"],                         "a":"Rise of autonomous agents in enterprise",                        "u":"AI agents for procurement workflows",                         "s":"Moving from AI as tool to AI as actor — and the compute cost of running it."},
+    {"d":5,  "dt":"Mar 26", "c":["Context Windows","Benchmarks"],                  "a":"Why context length matters for enterprise",                      "u":"Long-context models in contract analysis",                    "s":"How much AI can see at once, and how we measure whether it sees well."},
+    {"d":6,  "dt":"Mar 27", "c":["Multimodal AI","Tokens"],                        "a":"Multimodal AI in manufacturing quality control",                 "u":"Vision AI for product inspection",                            "s":"AI processing images, audio and text together — and the currency it uses."},
+    {"d":7,  "dt":"Mar 28", "c":["Fine-Tuning","Prompt Engineering"],              "a":"The hidden ROI of prompt engineering",                           "u":"Fine-tuned models for customer service",                      "s":"Two ways to get better outputs — one changes the model, one changes the input."},
+    {"d":8,  "dt":"Mar 29", "c":["Open Source AI","RAG"],                          "a":"Meta's open-source strategy and enterprise implications",        "u":"RAG for enterprise knowledge management",                     "s":"Open models vs. closed APIs — and connecting AI to your actual company data."},
+    {"d":9,  "dt":"Mar 30", "c":["Explainable AI (XAI)","MCP"],                   "a":"EU AI Act and explainability requirements",                      "u":"XAI in credit decisioning",                                   "s":"Transparency as regulatory requirement and trust-building tool."},
+    {"d":10, "dt":"Mar 31", "c":["GEO","Digital Twins"],                           "a":"How AI search changes B2B discoverability",                      "u":"Digital twins in supply chain optimization",                  "s":"Being found by AI — and simulating before you build."},
+    {"d":11, "dt":"Apr 1",  "c":["RLHF","AI Hallucination"],                       "a":"Hallucination in high-stakes enterprise contexts",               "u":"RLHF-trained models for compliance tasks",                    "s":"How AI learns human preferences — and where it still makes things up."},
+    {"d":12, "dt":"Apr 2",  "c":["Vector Search","AI Alignment"],                  "a":"Semantic search replacing keywords in enterprise",               "u":"Vector search in e-commerce discovery",                       "s":"Finding meaning not just keywords — and whether AI does what we intend."},
+    {"d":13, "dt":"Apr 3",  "c":["Synthetic Data","Small Language Models"],        "a":"Synthetic data as a privacy-safe training strategy",             "u":"SLMs for on-device retail assistant",                         "s":"Making data when you don't have enough — and running AI without cloud."},
+    {"d":14, "dt":"Apr 4",  "c":["Transformer Architecture","Physical AI"],        "a":"Physical AI entering the warehouse",                            "u":"Robotic AI in logistics",                                     "s":"The architecture powering all modern AI — and AI moving into the physical world."},
+    {"d":15, "dt":"Apr 5",  "c":["AI Sovereignty","Mixture of Experts"],           "a":"Southeast Asia's national AI strategies",                        "u":"Government AI procurement strategy",                          "s":"National control over AI infrastructure — and the efficiency trick behind GPT-4."},
+    {"d":16, "dt":"Apr 6",  "c":["Quantization","Test-Time Compute"],              "a":"DeepSeek and the cost compression wave",                         "u":"Quantized models for edge deployment in retail",              "s":"Making models smaller and smarter at inference — two sides of efficiency."},
+    {"d":17, "dt":"Apr 7",  "c":["Vibe Coding","AI Observability"],                "a":"No-code AI development changing who builds software",            "u":"Observability in financial AI systems",                       "s":"Natural language as programming interface — and the monitoring layer you need in prod."},
+    {"d":18, "dt":"Apr 8",  "c":["Neuro-Symbolic AI","Agentic Commerce"],          "a":"Agentic commerce and the future of B2B procurement",             "u":"AI agents in B2B supply chain negotiations",                  "s":"Combining logic with learning — and AI that shops and transacts for you."},
+    {"d":19, "dt":"Apr 9",  "c":["Prompt Injection","AI Safety Evaluations"],      "a":"Red-teaming AI before enterprise deployment",                    "u":"Security evaluation frameworks for AI vendors",               "s":"The attack vector to know before deploying agents — and how to test for it."},
+    {"d":20, "dt":"Apr 10", "c":["Knowledge Distillation","AI Inference Infrastructure"], "a":"The GPU arms race and what it means for AI pricing",      "u":"Infrastructure cost modelling for AI at scale",               "s":"Compressing big models into fast ones — and the hardware stack that runs AI in prod."},
+    {"d":21, "dt":"Apr 11", "c":["Federated Learning","Embedding Models"],         "a":"Privacy-preserving AI in healthcare consortia",                  "u":"Federated learning in cross-bank fraud detection",            "s":"Training AI without centralising data — and the vectors that give AI semantic memory."},
+    {"d":22, "dt":"Apr 12", "c":["Guardrails","AI Safety vs Ethics"],              "a":"How leading enterprises govern AI outputs",                      "u":"Guardrail architecture for customer-facing AI",               "s":"The control layer around AI — and the difference between catastrophic risk and everyday harm."},
+    {"d":23, "dt":"Apr 13", "c":["Edge AI","Multi-Agent Systems"],                 "a":"Edge AI in industrial IoT deployments",                         "u":"Multi-agent systems in insurance claims processing",          "s":"AI at the device — and AI networks that collaborate on complex tasks."},
+    {"d":24, "dt":"Apr 14", "c":["GenAI Paradox","AI Compute Scaling Laws"],       "a":"Why productivity gains from AI remain elusive",                  "u":"Measuring AI ROI with a portfolio approach",                  "s":"The gap between AI hype and measurable output — and the physics behind AI improvement."},
+    {"d":25, "dt":"Apr 15", "c":["AI Carbon Footprint","AI Workforce Displacement"], "a":"Sustainability pressures on enterprise AI roadmaps",           "u":"Responsible AI deployment with sustainability KPIs",          "s":"The environmental cost of AI — and the labour market implications executives must plan for."},
+    {"d":26, "dt":"Apr 16", "c":["AI Benchmarking Limitations","AI Legal Liability"], "a":"When AI fails in court — emerging liability precedents",      "u":"Vendor due diligence beyond benchmark scores",                "s":"Why test scores don't equal real capability — and who is legally responsible when AI goes wrong."},
+    {"d":27, "dt":"Apr 17", "c":["AI Memory Systems","Attention Mechanisms"],      "a":"Persistent memory in enterprise AI assistants",                  "u":"Memory-enabled sales AI for relationship management",         "s":"How AI remembers across sessions — and the mathematical core of why transformers work."},
+    {"d":28, "dt":"Apr 18", "c":["KV Cache","World Models"],                       "a":"Why context efficiency is the next AI cost battle",              "u":"World model AI in autonomous industrial planning",            "s":"The memory trick that makes long-context AI affordable — and AI that simulates before acting."},
+    {"d":29, "dt":"Apr 19", "c":["Liquid Neural Networks","RAFT"],                 "a":"Adaptive AI — beyond static model weights",                      "u":"RAFT for enterprise RAG quality improvement",                 "s":"Networks that adapt in real-time — and fine-tuning specifically for retrieval-heavy tasks."},
+    {"d":30, "dt":"Apr 20", "c":["Multi-Model Orchestration","AI Super App"],      "a":"GPT-5.5 launch — market implications",                           "u":"Hallucination-resistant models in financial services",         "s":"Coordinating multiple AI models for complex tasks — and the platform consolidation wave."},
+    {"d":31, "dt":"Apr 26", "c":["AI Governance Frameworks","Foundation Model APIs"], "a":"AI governance becoming a board-level agenda",                 "u":"AI centre of excellence — build vs buy vs partner",           "s":"Structural frameworks for managing AI risk — and the API economy underpinning enterprise AI."}
+  ],
+  "topics": [
+    {
+      "t": "RAG vs fine-tuning — when to use which",
+      "f": "Days 7–8",
+      "d": "A recurring question: retrieve at query time or train the model on your data? The answer depends on update frequency, cost, and accuracy needs.",
+      "p": "For an enterprise executive: explain when to use RAG vs fine-tuning, with concrete decision criteria, cost-benefit examples, and 2025 vendor context. 3 concise paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "Agentic AI vs AI agents — the distinction",
+      "f": "Day 4",
+      "d": "Not all AI agents are agentic. The difference matters for scoping deployments, managing risk, and setting user expectations.",
+      "p": "Explain the distinction between AI agents and agentic AI in plain language, with enterprise deployment implications and concrete examples. 3 paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "GEO bias and B2B discoverability",
+      "f": "Day 10",
+      "d": "If AI models answer before users visit websites, who gets cited — and is it fair? Critical for B2B marketing and content strategy.",
+      "p": "Explain GEO bias and how generative AI search creates winner-take-all discoverability dynamics. What should enterprise marketing teams do about it in 2025? 3 paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "Context engines vs databases",
+      "f": "Day 27",
+      "d": "AI memory systems behave differently from traditional databases. This gap is essential to understand before making enterprise AI integration decisions.",
+      "p": "Explain the architectural difference between AI context engines and traditional databases and why it matters for enterprise AI system design. 3 paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "How AI training data pipelines actually work",
+      "f": "Day 3",
+      "d": "From raw data to a trained model — the pipeline executives need to understand before evaluating vendor claims about data quality.",
+      "p": "Walk through how an AI training data pipeline works end to end, and what executives should scrutinise when evaluating vendor claims about training data quality. 3 paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "AI observability as a governance tool",
+      "f": "Day 17",
+      "d": "Observability isn't just a technical concern — it's the mechanism that makes AI accountability real. Essential for regulated industries.",
+      "p": "Explain AI observability as a governance and risk management tool for enterprise executives in regulated industries — what to monitor, why it matters, and what questions to ask vendors. 3 paragraphs, no headers, no bullets."
+    }
+  ]
+}
