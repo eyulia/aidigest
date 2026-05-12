@@ -40,7 +40,7 @@
     {"d":42, "dt":"May 7",  "c":["AI ROI Gap","AI Control Tower"],                   "a":"Stanford AI Index 2026", "u":"AI ROI measurement in enterprise deployments", "s":""},
     {"d":43, "dt":"May 8",  "c":["AI Deployment Layer","Agentic Culture Gap"],       "a":"OpenAI Deployment Company launch and vertical integration into professional services (May 2026)", "u":"Agents rushed to production / backlash", "s":""},
     {"d":44, "dt":"May 9",  "c":["AI Operations (AIOps)","AI Depth vs AI Access"],   "a":"", "u":"AI governance as sales accelerator / revenue driver", "s":""},
-    {"d":45, "dt":"May 10", "c":["Tokenization & Vocabulary","Inference Latency"],   "a":"", "u":"", "s":""}
+    {"d":45, "dt":"May 10", "c":["Tokenization & Vocabulary","Inference Latency"],   "a":"", "u":"AI deployment as competitive differentiator for SIs and consultancies", "s":""}
   ],
   "glossary": {
     "What is AI":                        "The broad concept of machines performing human-like intelligence tasks.",
