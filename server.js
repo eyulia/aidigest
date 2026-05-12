@@ -160,13 +160,19 @@ Rules:
     });
 
     const result = await upstream.json();
-    const text   = result.content?.[0]?.text || '';
+    console.log('Claude raw response:', JSON.stringify(result).slice(0, 500));
+
+    if (result.error) {
+      return res.status(500).json({ error: `Anthropic API error: ${result.error.message || result.error.type}` });
+    }
+
+    const text = result.content?.[0]?.text || '';
 
     // Extract JSON from the response
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       console.error('No JSON found in Claude response:', text);
-      return res.status(500).json({ error: 'Claude returned an unexpected format. Try again.' });
+      return res.status(500).json({ error: 'Claude returned an unexpected format. Try again.', raw: text.slice(0, 200) });
     }
 
     let entry;
