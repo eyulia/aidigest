@@ -34,12 +34,12 @@
     {"d":32, "dt":"Apr 27", "c":["Agent-to-Agent (A2A) Protocol","Neuromorphic Computing"], "a":"", "u":"", "s":""},
     {"d":33, "dt":"Apr 28", "c":["Large Action Models (LAMs)","AI Vendor Lock-In"],  "a":"", "u":"", "s":""},
     {"d":35, "dt":"Apr 30", "c":["AI Governance Frameworks","Decision Velocity"],    "a":"", "u":"", "s":""},
-    {"d":36, "dt":"May 1",  "c":["AI Identity & Non-Human Credentials","AI Stack Lock-In"], "a":"", "u":"", "s":""},
-    {"d":38, "dt":"May 3",  "c":["Shadow AI","Forward-Deployed Engineering"],        "a":"", "u":"", "s":""},
-    {"d":40, "dt":"May 5",  "c":["Agentic Resilience","Private Equity AI Deployment"], "a":"", "u":"", "s":""},
-    {"d":42, "dt":"May 7",  "c":["AI ROI Gap","AI Control Tower"],                   "a":"", "u":"", "s":""},
-    {"d":43, "dt":"May 8",  "c":["AI Deployment Layer","Agentic Culture Gap"],       "a":"", "u":"", "s":""},
-    {"d":44, "dt":"May 9",  "c":["AI Operations (AIOps)","AI Depth vs AI Access"],   "a":"", "u":"", "s":""},
+    {"d":36, "dt":"May 1",  "c":["AI Identity & Non-Human Credentials","AI Stack Lock-In"], "a":"AI identity and machine credentials in enterprise security", "u":"Vendor lock-in risk in procurement decisions", "s":""},
+    {"d":38, "dt":"May 3",  "c":["Shadow AI","Forward-Deployed Engineering"],        "a":"Shadow AI and governance blind spots", "u":"AI deployment as competitive differentiator for SIs and consultancies", "s":""},
+    {"d":40, "dt":"May 5",  "c":["Agentic Resilience","Private Equity AI Deployment"], "a":"OpenAI's next phase of enterprise AI (April 2026)", "u":"PE firms using AI for portfolio value creation", "s":""},
+    {"d":42, "dt":"May 7",  "c":["AI ROI Gap","AI Control Tower"],                   "a":"Stanford AI Index 2026", "u":"AI ROI measurement in enterprise deployments", "s":""},
+    {"d":43, "dt":"May 8",  "c":["AI Deployment Layer","Agentic Culture Gap"],       "a":"OpenAI Deployment Company launch and vertical integration into professional services (May 2026)", "u":"Agents rushed to production / backlash", "s":""},
+    {"d":44, "dt":"May 9",  "c":["AI Operations (AIOps)","AI Depth vs AI Access"],   "a":"", "u":"AI governance as sales accelerator / revenue driver", "s":""},
     {"d":45, "dt":"May 10", "c":["Tokenization & Vocabulary","Inference Latency"],   "a":"", "u":"", "s":""}
   ],
   "glossary": {
