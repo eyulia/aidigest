@@ -193,78 +193,9 @@ function updateStats(days) {
   }
 }
 
-/* ── GENERATE NEW DIGEST ── */
-async function generateDigest() {
-  const btn      = document.getElementById('generate-btn');
-  const status   = document.getElementById('generate-status');
-
-  btn.disabled    = true;
-  btn.textContent = 'Generating…';
-  status.textContent = '';
-  status.className   = 'gen-status';
-
-  try {
-    const res = await fetch('/api/generate', {
-      method:  'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-admin-key':  window._adminKey || ''
-      },
-      body: JSON.stringify({})
-    });
-
-    if (res.status === 401) {
-      status.textContent = 'Invalid admin key.';
-      status.className   = 'gen-status gen-error';
-      return;
-    }
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      status.textContent = data.error || 'Generation failed.';
-      status.className   = 'gen-status gen-error';
-      return;
-    }
-
-    // Reload data and re-render
-    const fresh = await fetch('/api/data').then(r => r.json());
-    SITE_DATA = fresh;
-    buildDays(fresh.days);
-    updateStats(fresh.days);
-
-    const entry = data.entry;
-    status.textContent = `Day ${entry.d} added: ${entry.c.join(' & ')}`;
-    status.className   = 'gen-status gen-ok';
-
-    // Open the new card
-    setTimeout(() => {
-      const card = document.getElementById('dc-' + entry.d);
-      if (card) {
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        card.classList.add('open');
-      }
-    }, 300);
-
-  } catch (err) {
-    status.textContent = 'Network error. Try again.';
-    status.className   = 'gen-status gen-error';
-  } finally {
-    btn.disabled   = false;
-    btn.textContent = 'New digest +';
-  }
-}
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', async () => {
-  // Admin mode: ?admin=KEY reveals the generate button
-  const params = new URLSearchParams(window.location.search);
-  const adminKey = params.get('admin');
-  if (adminKey) {
-    window._adminKey = adminKey;
-    document.getElementById('generate-btn').classList.add('visible');
-  }
-
   try {
     const res = await fetch('/api/data');
     SITE_DATA  = await res.json();

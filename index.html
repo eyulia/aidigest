@@ -135,16 +135,10 @@
         <div class="page-title">Daily sessions</div>
         <div class="page-sub" style="margin-bottom:0">Expand any session — then deep dive with a live AI briefing.</div>
       </div>
-      <div class="days-controls-right">
-        <div class="pill-group">
-          <button class="pill on" onclick="filt('all', this)">All</button>
-          <button class="pill" onclick="filt('recent', this)">Recent 7</button>
-        </div>
-        <button class="generate-btn" id="generate-btn" onclick="generateDigest()">New digest +</button>
+      <div class="pill-group">
+        <button class="pill on" onclick="filt('all', this)">All</button>
+        <button class="pill" onclick="filt('recent', this)">Recent 7</button>
       </div>
-    </div>
-    <div class="gen-status-wrap">
-      <span id="generate-status" class="gen-status"></span>
     </div>
     <div class="day-list" id="day-list"></div>
   </div><!-- /days -->
