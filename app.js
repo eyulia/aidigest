@@ -126,7 +126,7 @@ function buildDays(days) {
     } else if (d.a || d.u) {
       practicalHtml = `<div class="practical-block">${d.a || d.u}</div>`;
     } else {
-      practicalHtml = `<div class="practical-empty">Coming soon</div>`;
+      practicalHtml = '';
     }
 
     el.innerHTML = `
