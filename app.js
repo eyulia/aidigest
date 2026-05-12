@@ -57,7 +57,7 @@ async function callAI(areaId, prompt, btnEl) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1000,
         messages: [{
           role: 'user',
@@ -197,9 +197,8 @@ function updateStats(days) {
 async function generateDigest() {
   const btn      = document.getElementById('generate-btn');
   const status   = document.getElementById('generate-status');
-  const adminKey = localStorage.getItem('adminKey') || '';
 
-  btn.disabled   = true;
+  btn.disabled    = true;
   btn.textContent = 'Generating…';
   status.textContent = '';
   status.className   = 'gen-status';
@@ -208,21 +207,15 @@ async function generateDigest() {
     const res = await fetch('/api/generate', {
       method:  'POST',
       headers: {
-        'Content-Type':  'application/json',
-        'x-admin-key':   adminKey
+        'Content-Type': 'application/json',
+        'x-admin-key':  window._adminKey || ''
       },
       body: JSON.stringify({})
     });
 
     if (res.status === 401) {
-      const key = prompt('Enter admin key:');
-      if (key) {
-        localStorage.setItem('adminKey', key);
-        btn.disabled   = false;
-        btn.textContent = 'New digest +';
-        status.textContent = 'Key saved — click again to generate.';
-        status.className   = 'gen-status gen-info';
-      }
+      status.textContent = 'Invalid admin key.';
+      status.className   = 'gen-status gen-error';
       return;
     }
 
@@ -264,6 +257,14 @@ async function generateDigest() {
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', async () => {
+  // Admin mode: ?admin=KEY reveals the generate button
+  const params = new URLSearchParams(window.location.search);
+  const adminKey = params.get('admin');
+  if (adminKey) {
+    window._adminKey = adminKey;
+    document.getElementById('generate-btn').classList.add('visible');
+  }
+
   try {
     const res = await fetch('/api/data');
     SITE_DATA  = await res.json();
