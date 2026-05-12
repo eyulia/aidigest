@@ -142,7 +142,7 @@ function buildDays(days) {
   <div class="dc-num">D${String(d.d).padStart(2, '0')}</div>
   <div class="dc-mid">
     <div class="dc-tags">${cTags}</div>
-    <div class="dc-sub">${d.dt}${d.s ? ' · ' + d.s : ''}</div>
+    <div class="dc-sub">${d.s || ''}</div>
   </div>
   <div class="dc-chev">▾</div>
 </div>
