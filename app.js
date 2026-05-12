@@ -127,15 +127,14 @@ function buildDays(days) {
       ? esc(`Give an enterprise executive briefing on: ${practicalParts.join(' and ')}. Include current relevance and strategic implications in 2025.`)
       : esc(`Give a practical enterprise briefing on how "${d.c[0]}" and "${d.c[1]}" are being applied in real business contexts in 2025.`);
 
-    let practicalHtml;
+    const hasPractical = !!(d.a || d.u);
+    let practicalHtml = '';
     if (d.a && d.u) {
       practicalHtml = `<div class="practical-block">${d.a}</div>
         <div class="practical-divider"></div>
         <div class="practical-block">${d.u}</div>`;
-    } else if (d.a || d.u) {
+    } else if (hasPractical) {
       practicalHtml = `<div class="practical-block">${d.a || d.u}</div>`;
-    } else {
-      practicalHtml = '';
     }
 
     el.innerHTML = `
@@ -155,12 +154,13 @@ function buildDays(days) {
       <button class="dive-btn" onclick="callAI('ai-c-${d.d}', '${cPrompt}', this)">Deep dive ↗</button>
       <div id="ai-c-${d.d}" class="ai-box"></div>
     </div>
+    ${hasPractical ? `
     <div class="dc-panel">
       <div class="panel-label">PRACTICAL</div>
       <div class="panel-content">${practicalHtml}</div>
       <button class="dive-btn" onclick="callAI('ai-p-${d.d}', '${pPrompt}', this)">Explore ↗</button>
       <div id="ai-p-${d.d}" class="ai-box"></div>
-    </div>
+    </div>` : ''}
   </div>
 </div>`;
 
