@@ -156,7 +156,7 @@ function buildDays(days) {
     </div>
     ${hasPractical ? `
     <div class="dc-panel">
-      <div class="panel-label">PRACTICAL</div>
+      <div class="panel-label">LATEST IN AI</div>
       <div class="panel-content">${practicalHtml}</div>
       <button class="dive-btn" onclick="callAI('ai-p-${d.d}', '${pPrompt}', this)">Explore ↗</button>
       <div id="ai-p-${d.d}" class="ai-box"></div>
