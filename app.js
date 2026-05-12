@@ -107,10 +107,19 @@ function buildDays(days) {
     el.className = 'dc';
     el.id = 'dc-' + d.d;
 
+    const glossary = SITE_DATA.glossary || {};
     const cTags = d.c.map(x => `<span class="tag tag-c">${x}</span>`).join('');
     const esc = s => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
     const cPrompt = esc(`Give a current, practical briefing on "${d.c[0]}" and "${d.c[1]}" and their enterprise implications in 2025.`);
+
+    const conceptsHtml = d.c.map((name, i) => `
+      <div class="concept-item">
+        <div class="concept-name">${name}</div>
+        ${glossary[name] ? `<div class="concept-def">${glossary[name]}</div>` : ''}
+      </div>
+      ${i < d.c.length - 1 ? '<div class="concept-divider"></div>' : ''}
+    `).join('');
 
     // Practical panel: combine article + use case if present
     const practicalParts = [d.a, d.u].filter(Boolean);
@@ -142,7 +151,7 @@ function buildDays(days) {
   <div class="dc-panels">
     <div class="dc-panel">
       <div class="panel-label">AI CONCEPTS</div>
-      <div class="panel-content">${d.c[0]} &amp; ${d.c[1]}</div>
+      ${conceptsHtml}
       <button class="dive-btn" onclick="callAI('ai-c-${d.d}', '${cPrompt}', this)">Deep dive ↗</button>
       <div id="ai-c-${d.d}" class="ai-box"></div>
     </div>
