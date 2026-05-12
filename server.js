@@ -48,6 +48,18 @@ function checkDailyLimit() {
   return true;
 }
 
+// ── GET /api/debug ──────────────────────────────────────────
+app.get('/api/debug', (req, res) => {
+  const apiKey   = process.env.ANTHROPIC_API_KEY;
+  const adminKey = process.env.ADMIN_KEY;
+  res.json({
+    version:      'v4',
+    hasApiKey:    !!apiKey,
+    apiKeyPrefix: apiKey ? apiKey.slice(0, 8) + '…' : null,
+    hasAdminKey:  !!adminKey,
+  });
+});
+
 // ── GET /api/data ───────────────────────────────────────────
 // Returns the full digest data (days + topics).
 app.get('/api/data', (req, res) => {
