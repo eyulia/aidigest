@@ -111,7 +111,7 @@ function buildDays(days) {
     const cTags = d.c.map(x => `<span class="tag tag-c">${x}</span>`).join('');
     const esc = s => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
-    const cPrompt = esc(`Give a current, practical briefing on "${d.c[0]}" and "${d.c[1]}" and their enterprise implications in 2025.`);
+    const cPrompt = esc(`Give a current, practical briefing on ${d.c[0]} and ${d.c[1]} and their enterprise implications in 2025.`);
 
     const conceptsHtml = d.c.map((name, i) => `
       <div class="concept-item">
@@ -125,7 +125,7 @@ function buildDays(days) {
     const practicalParts = [d.a, d.u].filter(Boolean);
     const pPrompt = practicalParts.length > 0
       ? esc(`Give an enterprise executive briefing on: ${practicalParts.join(' and ')}. Include current relevance and strategic implications in 2025.`)
-      : esc(`Give a practical enterprise briefing on how "${d.c[0]}" and "${d.c[1]}" are being applied in real business contexts in 2025.`);
+      : esc(`Give a practical enterprise briefing on how ${d.c[0]} and ${d.c[1]} are being applied in real business contexts in 2025.`);
 
     const hasPractical = !!(d.a || d.u);
     let practicalHtml = '';
