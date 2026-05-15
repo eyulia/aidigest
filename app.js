@@ -245,6 +245,26 @@ function updateStats(days) {
 }
 
 
+/* ── UPDATE DOMAIN BARS ── */
+function updateDomainBars(days) {
+  const counts = {};
+  CAT_ORDER.forEach(cat => { counts[cat] = 0; });
+  days.forEach(d => {
+    const cat = d.cat || 'Foundations';
+    if (counts[cat] !== undefined) counts[cat]++;
+  });
+
+  const max = Math.max(...Object.values(counts), 1);
+
+  CAT_ORDER.forEach(cat => {
+    const n = counts[cat];
+    const fill = document.getElementById('bar-' + cat);
+    const label = document.getElementById('barn-' + cat);
+    if (fill)  fill.style.width  = Math.round((n / max) * 100) + '%';
+    if (label) label.textContent = n;
+  });
+}
+
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -258,4 +278,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   buildDays(SITE_DATA.days);
   buildTopics(SITE_DATA.topics);
   updateStats(SITE_DATA.days);
+  updateDomainBars(SITE_DATA.days);
 });
