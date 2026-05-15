@@ -12,14 +12,6 @@ function show(id, btn) {
   btn.classList.add('on');
 }
 
-/* ── FILTER ── */
-function filt(type, btn) {
-  document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
-  btn.classList.add('on');
-  document.querySelectorAll('.dc').forEach((c, i) => {
-    c.style.display = (type === 'all' || i < 7) ? '' : 'none';
-  });
-}
 
 /* ── TOGGLE DAY CARD ── */
 function tog(n) {
@@ -97,47 +89,42 @@ async function callAI(areaId, prompt, btnEl) {
   }
 }
 
-/* ── BUILD DAY CARDS ── */
-function buildDays(days) {
-  const list = document.getElementById('day-list');
-  list.innerHTML = '';
+/* ── BUILD A SINGLE DAY CARD ── */
+function buildDayCard(d) {
+  const el = document.createElement('div');
+  el.className = 'dc';
+  el.id = 'dc-' + d.d;
 
-  [...days].reverse().forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'dc';
-    el.id = 'dc-' + d.d;
+  const glossary = SITE_DATA.glossary || {};
+  const cTags = d.c.map(x => `<span class="tag tag-c">${x}</span>`).join('');
+  const esc = s => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
-    const glossary = SITE_DATA.glossary || {};
-    const cTags = d.c.map(x => `<span class="tag tag-c">${x}</span>`).join('');
-    const esc = s => s.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  const cPrompt = esc(`Give a current, practical briefing on ${d.c[0]} and ${d.c[1]} and their enterprise implications in 2025.`);
 
-    const cPrompt = esc(`Give a current, practical briefing on ${d.c[0]} and ${d.c[1]} and their enterprise implications in 2025.`);
+  const conceptsHtml = d.c.map((name, i) => `
+    <div class="concept-item">
+      <div class="concept-name">${name}</div>
+      ${glossary[name] ? `<div class="concept-def">${glossary[name]}</div>` : ''}
+    </div>
+    ${i < d.c.length - 1 ? '<div class="concept-divider"></div>' : ''}
+  `).join('');
 
-    const conceptsHtml = d.c.map((name, i) => `
-      <div class="concept-item">
-        <div class="concept-name">${name}</div>
-        ${glossary[name] ? `<div class="concept-def">${glossary[name]}</div>` : ''}
-      </div>
-      ${i < d.c.length - 1 ? '<div class="concept-divider"></div>' : ''}
-    `).join('');
+  const practicalParts = [d.a, d.u].filter(Boolean);
+  const pPrompt = practicalParts.length > 0
+    ? esc(`Give an enterprise executive briefing on: ${practicalParts.join(' and ')}. Include current relevance and strategic implications in 2025.`)
+    : esc(`Give a practical enterprise briefing on how ${d.c[0]} and ${d.c[1]} are being applied in real business contexts in 2025.`);
 
-    // Practical panel: combine article + use case if present
-    const practicalParts = [d.a, d.u].filter(Boolean);
-    const pPrompt = practicalParts.length > 0
-      ? esc(`Give an enterprise executive briefing on: ${practicalParts.join(' and ')}. Include current relevance and strategic implications in 2025.`)
-      : esc(`Give a practical enterprise briefing on how ${d.c[0]} and ${d.c[1]} are being applied in real business contexts in 2025.`);
+  const hasPractical = !!(d.a || d.u);
+  let practicalHtml = '';
+  if (d.a && d.u) {
+    practicalHtml = `<div class="practical-block">${d.a}</div>
+      <div class="practical-divider"></div>
+      <div class="practical-block">${d.u}</div>`;
+  } else if (hasPractical) {
+    practicalHtml = `<div class="practical-block">${d.a || d.u}</div>`;
+  }
 
-    const hasPractical = !!(d.a || d.u);
-    let practicalHtml = '';
-    if (d.a && d.u) {
-      practicalHtml = `<div class="practical-block">${d.a}</div>
-        <div class="practical-divider"></div>
-        <div class="practical-block">${d.u}</div>`;
-    } else if (hasPractical) {
-      practicalHtml = `<div class="practical-block">${d.a || d.u}</div>`;
-    }
-
-    el.innerHTML = `
+  el.innerHTML = `
 <div class="dc-head" onclick="tog(${d.d})">
   <div class="dc-num">D${String(d.d).padStart(2, '0')}</div>
   <div class="dc-mid">
@@ -164,7 +151,55 @@ function buildDays(days) {
   </div>
 </div>`;
 
-    list.appendChild(el);
+  return el;
+}
+
+/* ── CATEGORY ORDER & LABELS ── */
+const CAT_ORDER = ['Foundations', 'Architecture', 'Enterprise AI', 'Safety & Risk', 'Society & Law'];
+
+/* ── BUILD DAY CARDS grouped by category ── */
+function buildDays(days) {
+  const list = document.getElementById('day-list');
+  list.innerHTML = '';
+
+  // Group days by category
+  const groups = {};
+  CAT_ORDER.forEach(cat => { groups[cat] = []; });
+  days.forEach(d => {
+    const cat = d.cat || 'Foundations';
+    if (!groups[cat]) groups[cat] = [];
+    groups[cat].push(d);
+  });
+
+  // Render each category section
+  CAT_ORDER.forEach(cat => {
+    const catDays = groups[cat];
+    if (!catDays || catDays.length === 0) return;
+
+    const section = document.createElement('div');
+    section.className = 'cat-section';
+    section.dataset.cat = cat;
+
+    const header = document.createElement('div');
+    header.className = 'cat-header';
+    header.innerHTML = `<span class="cat-label">${cat}</span><span class="cat-count">${catDays.length} sessions</span>`;
+    section.appendChild(header);
+
+    // Sort newest first within category
+    [...catDays].sort((a, b) => b.d - a.d).forEach(d => {
+      section.appendChild(buildDayCard(d));
+    });
+
+    list.appendChild(section);
+  });
+}
+
+/* ── FILTER by category ── */
+function filtCat(cat, btn) {
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.cat-section').forEach(s => {
+    s.style.display = (cat === 'all' || s.dataset.cat === cat) ? '' : 'none';
   });
 }
 

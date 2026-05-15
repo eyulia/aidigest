@@ -124,8 +124,12 @@
         <div class="page-sub" style="margin-bottom:0">Expand any session — then deep dive with a live AI briefing.</div>
       </div>
       <div class="pill-group">
-        <button class="pill on" onclick="filt('all', this)">All</button>
-        <button class="pill" onclick="filt('recent', this)">Recent 7</button>
+        <button class="cat-pill on" onclick="filtCat('all', this)">All</button>
+        <button class="cat-pill" onclick="filtCat('Foundations', this)">Foundations</button>
+        <button class="cat-pill" onclick="filtCat('Architecture', this)">Architecture</button>
+        <button class="cat-pill" onclick="filtCat('Enterprise AI', this)">Enterprise AI</button>
+        <button class="cat-pill" onclick="filtCat('Safety &amp; Risk', this)">Safety &amp; Risk</button>
+        <button class="cat-pill" onclick="filtCat('Society &amp; Law', this)">Society &amp; Law</button>
       </div>
     </div>
     <div class="day-list" id="day-list"></div>

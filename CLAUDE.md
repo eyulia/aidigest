@@ -25,6 +25,7 @@ Only `data.json` needs to be updated. Two places:
 {
   "d": 49,
   "dt": "May 16",
+  "cat": "Enterprise AI",
   "c": ["Concept One", "Concept Two"],
   "a": "Featured article or news theme",
   "u": "Enterprise use case or strategic insight",
@@ -33,6 +34,7 @@ Only `data.json` needs to be updated. Two places:
 ```
 - `d` — day number (check last entry and increment by 1)
 - `dt` — session date (e.g. "May 16")
+- `cat` — category: one of `Foundations`, `Architecture`, `Enterprise AI`, `Safety & Risk`, `Society & Law`
 - `c` — exactly 2 concept names; must match glossary keys exactly
 - `a` — article theme for Latest in AI panel (can be empty string)
 - `u` — use case or insight for Latest in AI panel (can be empty string)
@@ -55,6 +57,7 @@ Each expanded day card shows 2 panels:
 - Sessions: Days 1–48 (with gaps at 34, 37, 39, 41 — no session those days)
 - Concepts covered: 88 (check glossary object for full list — never repeat)
 - Next session: Day 49
+- Daily Sessions tab groups cards by category: Foundations / Architecture / Enterprise AI / Safety & Risk / Society & Law
 
 ## Deployment
 - Railway auto-deploys on every push to `main`
