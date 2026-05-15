@@ -23,7 +23,7 @@ Only `data.json` needs to be updated. Two places:
 ### 1. Add entry to the `days` array (append at the end)
 ```json
 {
-  "d": 48,
+  "d": 49,
   "dt": "May 16",
   "c": ["Concept One", "Concept Two"],
   "a": "Featured article or news theme",
@@ -52,9 +52,9 @@ Each expanded day card shows 2 panels:
 - **LATEST IN AI** — shows `a` and `u` stacked with a divider + Explore button. Panel is hidden entirely if both `a` and `u` are empty.
 
 ## Current state
-- Sessions: Days 1–47 (with gaps at 34, 37, 39, 41 — no session those days)
-- Concepts covered: 86 (check glossary object for full list — never repeat)
-- Next session: Day 48
+- Sessions: Days 1–48 (with gaps at 34, 37, 39, 41 — no session those days)
+- Concepts covered: 88 (check glossary object for full list — never repeat)
+- Next session: Day 49
 
 ## Deployment
 - Railway auto-deploys on every push to `main`
@@ -71,4 +71,4 @@ user.name  = eyulia
 ```
 
 ## Typical session prompt
-> "Read CLAUDE.md. Here's Day 48 content: [paste content]. Add it to data.json and push to GitHub."
+> "Read CLAUDE.md. Here's Day 49 content: [paste content]. Add it to data.json and push to GitHub."
