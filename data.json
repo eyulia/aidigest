@@ -41,7 +41,8 @@
     {"d":43, "dt":"May 8",  "c":["AI Deployment Layer","Agentic Culture Gap"],       "a":"OpenAI Deployment Company launch and vertical integration into professional services (May 2026)", "u":"Agents rushed to production / backlash", "s":""},
     {"d":44, "dt":"May 9",  "c":["AI Operations (AIOps)","AI Depth vs AI Access"],   "a":"", "u":"AI governance as sales accelerator / revenue driver", "s":""},
     {"d":45, "dt":"May 10", "c":["Tokenization & Vocabulary","Inference Latency"],   "a":"", "u":"AI deployment as competitive differentiator for SIs and consultancies", "s":""},
-    {"d":46, "dt":"May 13", "c":["Gradient Descent","Data Flywheel"],               "a":"", "u":"SAP's Autonomous Enterprise announcement — Joule Studio, SAP Knowledge Graph, and a €100M SI partner fund, signalling a shift from AI as a feature to AI as the operating layer of enterprise software (May 2026)", "s":""}
+    {"d":46, "dt":"May 13", "c":["Gradient Descent","Data Flywheel"],               "a":"", "u":"SAP's Autonomous Enterprise announcement — Joule Studio, SAP Knowledge Graph, and a €100M SI partner fund, signalling a shift from AI as a feature to AI as the operating layer of enterprise software (May 2026)", "s":""},
+    {"d":47, "dt":"May 14", "c":["Mechanistic Interpretability","Data Pipeline"],   "a":"Novo Nordisk + OpenAI full-enterprise partnership — AI deployed across drug discovery, clinical trials, manufacturing, supply chain, and commercial operations, with full rollout targeted by end of 2026", "u":"The transformation layer is where enterprise AI projects most commonly fail silently. Key vendor question: where does data live after transformation, and what does migration look like if we switch?", "s":""}
   ],
   "glossary": {
     "What is AI":                        "The broad concept of machines performing human-like intelligence tasks.",
@@ -127,7 +128,9 @@
     "Tokenization & Vocabulary":         "How text is converted into tokens using a fixed vocabulary learned at training time — impacts cost, speed, and domain accuracy.",
     "Inference Latency":                 "The time from query to response, measured as Time to First Token and Tokens per Second — a hidden determinant of deployment success.",
     "Gradient Descent":                  "The core algorithm by which AI models learn — measuring prediction error and adjusting parameters incrementally to reduce it. Training quality, stability, and generalisation all trace back to choices made here.",
-    "Data Flywheel":                     "A self-reinforcing loop where more users generate more data, which trains better models, which attract more users. Creates structural moats for incumbents and raises questions about who owns the value generated from enterprise usage data."
+    "Data Flywheel":                     "A self-reinforcing loop where more users generate more data, which trains better models, which attract more users. Creates structural moats for incumbents and raises questions about who owns the value generated from enterprise usage data.",
+    "Mechanistic Interpretability":      "The research field attempting to reverse-engineer neural networks — mapping which internal components activate for which concepts and what computational circuits produce specific behaviours. Foundation for AI explainability and a key vendor due diligence question in credit, insurance, and healthcare.",
+    "Data Pipeline":                     "The end-to-end system that moves raw data from source through cleaning, transformation, and formatting into a form AI can use. The transformation layer — sitting between raw data and model input — is where enterprise AI projects most commonly fail silently."
   },
 
   "topics": [
