@@ -143,6 +143,7 @@ Generate Day ${nextDay} of the digest. Return ONLY a valid JSON object (no markd
 {
   "d": ${nextDay},
   "dt": "${monthDay}",
+  "cat": "Enterprise AI",
   "c": ["ConceptOne", "ConceptTwo"],
   "a": "Specific article theme or current industry development",
   "u": "Specific enterprise use case naming an industry",
@@ -154,7 +155,13 @@ Rules:
 - Pick concepts relevant to enterprise AI in 2025 that build naturally on prior sessions
 - a: a concrete, real topic (not generic like "AI trends") — name the technology or event
 - u: industry-specific (e.g. "AI-assisted contract review in insurance underwriting")
-- s: one plain-English sentence, informative and specific`;
+- s: one plain-English sentence, informative and specific
+- cat: assign exactly one of these categories based on the concepts chosen:
+  "Foundations" — how AI works at a basic level (training, data, tokens, model types, core algorithms)
+  "Architecture" — technical systems and infrastructure (agents, RAG, transformers, inference, pipelines, protocols)
+  "Enterprise AI" — business deployment, strategy, ROI, vendor decisions, operational patterns
+  "Safety & Risk" — alignment, hallucination, red-teaming, guardrails, liability, benchmarking limitations
+  "Society & Law" — regulation, workforce, sovereignty, sustainability, policy`;
 
   try {
     const upstream = await fetch('https://api.anthropic.com/v1/messages', {
@@ -212,8 +219,9 @@ Rules:
       });
     }
 
-    // Normalise day number
+    // Normalise day number and fallback category
     entry.d = nextDay;
+    if (!entry.cat) entry.cat = 'Foundations';
 
     // Append and persist
     data.days.push(entry);
