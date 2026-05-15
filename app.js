@@ -195,11 +195,9 @@ function buildTopics(topics) {
 function updateStats(days) {
   const sessions  = days.length;
   const concepts  = days.reduce((n, d) => n + d.c.length, 0);
-  const useCases  = days.length;
 
   document.getElementById('kpi-sessions').textContent  = sessions;
   document.getElementById('kpi-concepts').textContent  = concepts + '+';
-  document.getElementById('kpi-usecases').textContent  = useCases;
 
   // Streak: weeks spanned from first to last session
   if (days.length > 1) {
