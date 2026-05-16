@@ -23,21 +23,21 @@ Only `data.json` needs to be updated. Two places:
 ### 1. Add entry to the `days` array (append at the end)
 ```json
 {
-  "d": 49,
-  "dt": "May 16",
+  "d": 50,
+  "dt": "May 17",
   "cat": "Enterprise AI",
   "c": ["Concept One", "Concept Two"],
-  "a": "Featured article or news theme",
-  "u": "Enterprise use case or strategic insight",
+  "a": "Combined Latest in AI blurb — article, use case, or strategic insight in one passage",
+  "u": "",
   "s": ""
 }
 ```
 - `d` — day number (check last entry and increment by 1)
-- `dt` — session date (e.g. "May 16")
+- `dt` — session date (e.g. "May 17")
 - `cat` — category: one of `Foundations`, `Architecture`, `Enterprise AI`, `Safety & Risk`, `Society & Law`
 - `c` — exactly 2 concept names; must match glossary keys exactly
-- `a` — article theme for Latest in AI panel (can be empty string)
-- `u` — use case or insight for Latest in AI panel (can be empty string)
+- `a` — full Latest in AI content (article + use case/insight combined into one passage); can be empty string
+- `u` — always set to `""` for new entries (deprecated; kept for legacy days)
 - `s` — one-line summary shown on card header (leave empty if not provided)
 
 ### 2. Add definitions to the `glossary` object
@@ -54,9 +54,9 @@ Each expanded day card shows 2 panels:
 - **LATEST IN AI** — shows `a` and `u` stacked with a divider + Explore button. Panel is hidden entirely if both `a` and `u` are empty.
 
 ## Current state
-- Sessions: Days 1–48 (with gaps at 34, 37, 39, 41 — no session those days)
-- Concepts covered: 88 (check glossary object for full list — never repeat)
-- Next session: Day 49
+- Sessions: Days 1–49 (with gaps at 34, 37, 39, 41 — no session those days)
+- Concepts covered: 90 (check glossary object for full list — never repeat)
+- Next session: Day 50
 - Daily Sessions tab groups cards by category: Foundations / Architecture / Enterprise AI / Safety & Risk / Society & Law
 
 ## Deployment
@@ -74,4 +74,4 @@ user.name  = eyulia
 ```
 
 ## Typical session prompt
-> "Read CLAUDE.md. Here's Day 49 content: [paste content]. Add it to data.json and push to GitHub."
+> "Read CLAUDE.md. Here's Day 50 content: [paste content]. Add it to data.json and push to GitHub."
