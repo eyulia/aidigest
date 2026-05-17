@@ -54,9 +54,9 @@ Each expanded day card shows 2 panels:
 - **LATEST IN AI** — shows `a` and `u` stacked with a divider + Explore button. Panel is hidden entirely if both `a` and `u` are empty.
 
 ## Current state
-- Sessions: Days 1–49 (with gaps at 34, 37, 39, 41 — no session those days)
-- Concepts covered: 90 (check glossary object for full list — never repeat)
-- Next session: Day 50
+- Sessions: Days 1–50 (with gaps at 34, 37, 39, 41 — no session those days)
+- Concepts covered: 92 (check glossary object for full list — never repeat)
+- Next session: Day 51
 - Daily Sessions tab groups cards by category: Foundations / Architecture / Enterprise AI / Safety & Risk / Society & Law
 
 ## Deployment
