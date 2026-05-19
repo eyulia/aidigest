@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -35,6 +35,9 @@
   </button>
   <button class="tab" onclick="show('topics', this)">
     <span class="tab-dot"></span>Deep dives
+  </button>
+  <button class="tab" onclick="show('arch', this)">
+    <span class="tab-dot"></span>Architecture
   </button>
 </nav>
 
@@ -134,6 +137,188 @@
     </div>
     <div class="day-list" id="day-list"></div>
   </div><!-- /days -->
+
+  <!-- ARCHITECTURE -->
+  <div class="sec" id="sec-arch">
+
+    <div class="arch-hero-label"><span class="arch-hero-dot"></span>Reference</div>
+    <h1 class="arch-h1">AI architecture layers<br>at a glance</h1>
+    <p class="arch-hero-sub">A practical map of the AI tech stack — what each layer does, who the key players are, and where most enterprises buy versus build. Click any layer to expand it.</p>
+
+    <div class="diagram-wrap">
+      <div class="stack" id="stack">
+
+        <div class="layer-row layer-ui">
+          <div class="layer-label">Interface</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('ui')">
+              <div class="cell-name">User interface</div>
+              <div class="cell-detail">Chat, voice, API, embedded widget, co-pilot</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">↕</div>
+
+        <div class="layer-row layer-app">
+          <div class="layer-label">Application</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('app')">
+              <div class="cell-name">Application layer</div>
+              <div class="cell-detail">Prompts, guardrails, evals, business logic, output formatting</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">↕</div>
+
+        <div class="layer-row layer-orch">
+          <div class="layer-label">Orchestration</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('agent')">
+              <div class="cell-name">Agent framework</div>
+              <div class="cell-detail">Planning, tool use, task loops — LangChain, AutoGen, CrewAI</div>
+            </div>
+            <div class="cell" onclick="showDetail('multiagent')">
+              <div class="cell-name">Multi-agent coordination</div>
+              <div class="cell-detail">A2A protocol, stateful runtime, MCP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">↕</div>
+
+        <div class="layer-row layer-mem">
+          <div class="layer-label">Memory &amp; data</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('vectordb')">
+              <div class="cell-name">Vector DB</div>
+              <div class="cell-detail">RAG, semantic search — Pinecone, Weaviate</div>
+            </div>
+            <div class="cell" onclick="showDetail('sessionmem')">
+              <div class="cell-name">Session memory</div>
+              <div class="cell-detail">Stateful context — Mem0, Zep, custom</div>
+            </div>
+            <div class="cell" onclick="showDetail('pipeline')">
+              <div class="cell-name">Data pipeline</div>
+              <div class="cell-detail">ETL, chunking, embedding — Airflow, dbt</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">↕</div>
+
+        <div class="layer-row layer-serve">
+          <div class="layer-label">Serving</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('api')">
+              <div class="cell-name">Model API / inference endpoint</div>
+              <div class="cell-detail">Anthropic, OpenAI, Azure, AWS Bedrock</div>
+            </div>
+            <div class="cell" onclick="showDetail('selfhost')">
+              <div class="cell-name">Self-hosted serving</div>
+              <div class="cell-detail">vLLM, Ollama, TGI — your own infrastructure</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">↕</div>
+
+        <div class="layer-row layer-model">
+          <div class="layer-label">Model</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('model')">
+              <div class="cell-name">Foundation model</div>
+              <div class="cell-detail">Pre-trained weights — Claude, GPT-4o, Gemini, Llama, Mistral</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connector">↕</div>
+
+        <div class="layer-row layer-infra">
+          <div class="layer-label">Compute</div>
+          <div class="layer-cells">
+            <div class="cell" onclick="showDetail('compute')">
+              <div class="cell-name">Compute infrastructure</div>
+              <div class="cell-detail">GPUs / TPUs / custom silicon — NVIDIA, Google TPU, AWS Trainium</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="detail-panel" id="detail-panel">
+        <div class="detail-header">
+          <div class="detail-name" id="detail-name"></div>
+          <button class="detail-close" onclick="closeDetail()">×</button>
+        </div>
+        <div class="detail-desc" id="detail-desc"></div>
+        <div class="detail-examples" id="detail-examples"></div>
+      </div>
+    </div>
+
+    <div class="arch-section-title">The executive decision: buy vs build</div>
+    <div class="buy-build">
+      <div class="bb-card bb-buy">
+        <div class="bb-pill">Usually buy</div>
+        <div class="bb-title">Compute + model + serving</div>
+        <div class="bb-items">GPU infrastructure, foundation model weights, and inference APIs are almost never built in-house. The economics don't work and the talent requirements are prohibitive for all but the largest tech companies.</div>
+      </div>
+      <div class="bb-card bb-choice">
+        <div class="bb-pill">Buy or build</div>
+        <div class="bb-title">Memory &amp; data layer</div>
+        <div class="bb-items">Vector databases and data pipelines can be bought as managed services (Pinecone, Weaviate) or built on open-source infrastructure. The choice depends on data sensitivity, scale, and whether an existing data team is in place.</div>
+      </div>
+      <div class="bb-card bb-build">
+        <div class="bb-pill">Usually build</div>
+        <div class="bb-title">Application + orchestration</div>
+        <div class="bb-items">Your business logic, prompts, guardrails, and agent workflows are where your differentiation lives. Most organisations assemble this layer using open-source frameworks (LangChain, AutoGen) rather than building pure from scratch.</div>
+      </div>
+    </div>
+
+    <div class="arch-section-title">What the diagram doesn't show</div>
+    <div class="caveats">
+      <div class="caveat">
+        <div class="caveat-num">01</div>
+        <div class="caveat-body">
+          <div class="caveat-title">There is no universal consensus on this stack</div>
+          <div class="caveat-text">Different vendors draw these boundaries differently — and often self-servingly. AWS emphasises Bedrock as the natural serving layer and treats everything above it as your problem. LangChain and LlamaIndex want to own your entire orchestration and memory layer. OpenAI is now vertically integrating downward into deployment services. The stack blurs wherever a vendor has commercial interest in blurring it.</div>
+        </div>
+      </div>
+      <div class="caveat">
+        <div class="caveat-num">02</div>
+        <div class="caveat-body">
+          <div class="caveat-title">The layers are not cleanly separated</div>
+          <div class="caveat-text">Unlike the OSI networking model, AI stack layers bleed into each other constantly. Memory bleeds into orchestration. The serving layer bleeds into the model itself (prompt caching, KV cache). Application logic bleeds into prompt design, which bleeds into model behaviour. A clean seven-layer diagram is a useful map — not an accurate description of reality.</div>
+        </div>
+      </div>
+      <div class="caveat">
+        <div class="caveat-num">03</div>
+        <div class="caveat-body">
+          <div class="caveat-title">The middle layers are moving fastest</div>
+          <div class="caveat-text">The memory and orchestration layers barely existed as distinct categories 18 months ago. Stateful agents as a concept is being productised right now — in May 2026. The compute and model layers are relatively stable; the orchestration and memory layers are where most of the churn is. Any stack diagram you see today will be partially outdated within a year.</div>
+        </div>
+      </div>
+      <div class="caveat">
+        <div class="caveat-num">04</div>
+        <div class="caveat-body">
+          <div class="caveat-title">Value doesn't live where the diagram is tallest</div>
+          <div class="caveat-text">The foundation model and compute layers dominate headlines and investment. But for most enterprises, the actual ROI question lives in the application and orchestration layers — specifically, how well your business logic, context design, and agent workflows are built. Most deployments that fail do so not because the model is bad, but because the layers above it are poorly designed.</div>
+        </div>
+      </div>
+      <div class="caveat">
+        <div class="caveat-num">05</div>
+        <div class="caveat-body">
+          <div class="caveat-title">Vendor lock-in compounds as you go down the stack</div>
+          <div class="caveat-text">Switching a UI is straightforward. Switching an agent framework is painful but possible. Switching your foundation model vendor after building deep integrations into their proprietary APIs, fine-tuning pipelines, and data formats is a multi-month project. The further down the stack a vendor dependency sits, the higher the switching cost — and the more leverage that vendor has in future contract negotiations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-footnote">This reference was generated from a Day 52 session of the AI Fluency Daily Digest — a structured learning programme for enterprise executives navigating AI strategy, procurement, and implementation. Last updated May 2026.</div>
+
+  </div><!-- /arch -->
 
   <!-- DEEP DIVES -->
   <div class="sec" id="sec-topics">

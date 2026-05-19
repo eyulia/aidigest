@@ -265,6 +265,85 @@ function updateDomainBars(days) {
   });
 }
 
+/* ── ARCHITECTURE: layer detail data ── */
+const archDetails = {
+  ui: {
+    name: 'User interface layer',
+    desc: 'The surface the user actually touches: a chat window, a voice assistant, a REST API endpoint, or an embedded co-pilot button in an existing enterprise application. The interface layer determines how users interact with the AI system, but contains almost no AI logic itself. It passes inputs down and surfaces outputs up.',
+    ex: '<strong>Key question for buyers:</strong> Does the interface connect to your existing workflows (Slack, Teams, your CRM, your ERP) or does it require users to context-switch to a separate tool? Adoption rates differ dramatically.'
+  },
+  app: {
+    name: 'Application layer',
+    desc: 'Where your business logic lives. This layer wraps the model with prompts (what the AI should do), guardrails (what it should never do), evaluation logic (how you check output quality), and output formatting (how results are structured for downstream use). This is where most enterprise differentiation is built — and where most deployment failures actually occur.',
+    ex: '<strong>Key question for buyers:</strong> Who owns the prompts and guardrails? If your vendor manages them, you have limited ability to change behaviour without their involvement.'
+  },
+  agent: {
+    name: 'Agent framework',
+    desc: 'The orchestration layer that turns a single model call into a multi-step workflow. Agent frameworks give the AI the ability to plan a sequence of steps, call external tools (web search, database queries, code execution), loop until a task is complete, and handle errors. Common open-source options: LangChain, LlamaIndex, AutoGen, CrewAI.',
+    ex: '<strong>Key question for buyers:</strong> Is your vendor\'s agent framework proprietary or built on open standards? Proprietary frameworks create lock-in at the orchestration layer, which is expensive to escape.'
+  },
+  multiagent: {
+    name: 'Multi-agent coordination',
+    desc: 'When multiple AI agents need to collaborate — one researching, one drafting, one checking compliance — they need a shared view of current state and a way to communicate. This is solved through protocols (A2A), stateful runtime environments, and coordination frameworks (MCP). This layer is nascent and actively being standardised as of mid-2026.',
+    ex: '<strong>Key question for buyers:</strong> If you plan to run multiple agents across departments, how does the vendor handle shared state, conflict resolution, and audit trails across agent interactions?'
+  },
+  vectordb: {
+    name: 'Vector database',
+    desc: 'Stores documents as numerical vectors (embeddings) that capture semantic meaning. Enables RAG — retrieval-augmented generation — where the AI searches its knowledge base for relevant context before answering. The chunking strategy (how documents are split before storage) is a hidden quality lever that most evaluations miss.',
+    ex: '<strong>Key question for buyers:</strong> Who manages the embedding pipeline and chunking strategy? Poor chunking produces a vector database that contains the right information but retrieves the wrong pieces.'
+  },
+  sessionmem: {
+    name: 'Session memory',
+    desc: 'Persistent storage of what the AI has done, decided, and observed across sessions and tasks. Without this, every interaction starts from scratch — the agent is effectively amnesiac. Stateful memory is what makes long-horizon automation possible: multi-day RFPs, ongoing client relationships, complex procurement workflows.',
+    ex: '<strong>Key question for buyers:</strong> Does the AI system remember context across sessions automatically, or does your team need to manually re-brief it each time? The answer has large implications for practical usefulness.'
+  },
+  pipeline: {
+    name: 'Data pipeline',
+    desc: 'The infrastructure that moves raw data from source systems (databases, documents, APIs) through cleaning, transformation, and formatting into a form the AI can use. The transformation layer is where enterprise AI projects most commonly fail silently. Dirty, inconsistent, or poorly formatted data produces unreliable AI outputs regardless of model quality.',
+    ex: '<strong>Key question for buyers:</strong> What data sources feed the AI system, who maintains the pipeline, and what happens to output quality when source data changes?'
+  },
+  api: {
+    name: 'Model API / inference endpoint',
+    desc: 'A managed service that hosts the foundation model and handles inference — you send a request, you get a response. The API layer abstracts away all compute management. Major options: Anthropic API, OpenAI API, Azure OpenAI, AWS Bedrock, Google Vertex AI. Pricing is per token (input + output), with significant variation across providers.',
+    ex: '<strong>Key question for buyers:</strong> Which API does your vendor use? If they can only run on one provider, you inherit that provider\'s availability, pricing changes, and terms of service.'
+  },
+  selfhost: {
+    name: 'Self-hosted serving',
+    desc: 'Running the model on your own infrastructure rather than through a third-party API. Enables full data privacy (nothing leaves your environment), lower per-query cost at scale, and the ability to run fine-tuned or open-source models. The trade-off: significant operational complexity and the need for GPU infrastructure.',
+    ex: '<strong>Key question for buyers:</strong> Does your use case require data to never leave your environment (regulated industries, sensitive IP)? If yes, self-hosting is often mandatory regardless of cost.'
+  },
+  model: {
+    name: 'Foundation model',
+    desc: 'The pre-trained neural network whose weights encode the AI\'s capabilities. Training a foundation model from scratch costs tens to hundreds of millions of dollars and is done by a tiny number of organisations (Anthropic, OpenAI, Google DeepMind, Meta, Mistral, a few others). Most enterprises access foundation models via API or download open-source weights.',
+    ex: '<strong>Key question for buyers:</strong> Are you locked to one foundation model, or can your application layer swap models as better or cheaper options emerge? Model-agnostic architectures age much better.'
+  },
+  compute: {
+    name: 'Compute infrastructure',
+    desc: 'The physical hardware that runs AI workloads — primarily GPUs (NVIDIA H100/H200/B200) for training, and increasingly specialised inference chips (Google TPUs, AWS Trainium, custom silicon) for serving. Compute is the most capital-intensive layer and is dominated by a handful of chip manufacturers and cloud providers.',
+    ex: '<strong>Key question for buyers:</strong> Your AI vendor\'s pricing and availability are ultimately constrained by GPU supply. Understanding compute scarcity helps you anticipate price changes and negotiate multi-year contracts appropriately.'
+  }
+};
+
+let currentDetail = null;
+
+function showDetail(key) {
+  const d = archDetails[key];
+  if (!d) return;
+  if (currentDetail === key) { closeDetail(); return; }
+  currentDetail = key;
+  document.getElementById('detail-name').textContent = d.name;
+  document.getElementById('detail-desc').textContent = d.desc;
+  document.getElementById('detail-examples').innerHTML = d.ex;
+  const panel = document.getElementById('detail-panel');
+  panel.classList.add('open');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+
+function closeDetail() {
+  currentDetail = null;
+  document.getElementById('detail-panel').classList.remove('open');
+}
+
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', async () => {
   try {
