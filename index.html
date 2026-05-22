@@ -39,6 +39,9 @@
   <button class="tab" onclick="show('arch', this)">
     <span class="tab-dot"></span>Architecture
   </button>
+  <button class="tab" onclick="show('lifecycle', this)">
+    <span class="tab-dot"></span>AI Lifecycle
+  </button>
 </nav>
 
 <!-- ── MAIN ── -->
@@ -319,6 +322,123 @@
     <div class="arch-footnote">This reference was generated from a Day 52 session of the AI Fluency Daily Digest — a structured learning programme for enterprise executives navigating AI strategy, procurement, and implementation. Last updated May 2026.</div>
 
   </div><!-- /arch -->
+
+  <!-- AI LIFECYCLE -->
+  <div class="sec" id="sec-lifecycle">
+
+    <p class="lc-eyebrow">Reference guide</p>
+    <h1 class="arch-h1">AI model lifecycle —<br>training time vs inference time</h1>
+    <p class="lc-intro">When vendors announce performance improvements, cost reductions, or capability upgrades, which phase of the lifecycle are they actually talking about? This guide maps the techniques to the moment they happen — and whether the model itself changes.</p>
+
+    <div class="lc-callout">
+      <strong>The executive question this answers:</strong> Most vendor "speed" and "cost" improvements happen at inference time — the model weights don't change at all. Understanding which phase a claimed improvement comes from helps you evaluate whether it's a genuine capability advance or an engineering efficiency gain.
+    </div>
+
+    <div class="timeline-scroll">
+
+      <div class="timeline">
+        <div class="col-pretrain"><div class="phase-header"><span class="phase-name">Pre-training</span><span class="phase-sub">Build the model</span></div></div>
+        <div class="col-training"><div class="phase-header"><span class="phase-name">Training</span><span class="phase-sub">Teach the model</span></div></div>
+        <div class="col-post"><div class="phase-header"><span class="phase-name">Post-training</span><span class="phase-sub">Refine &amp; compress</span></div></div>
+        <div class="col-inference"><div class="phase-header"><span class="phase-name">Inference</span><span class="phase-sub">Run the model</span></div></div>
+        <div class="col-runtime"><div class="phase-header"><span class="phase-name">Production runtime</span><span class="phase-sub">Operate the model</span></div></div>
+      </div>
+
+      <div class="weights-row">
+        <div><span class="weights-badge badge-yes">Weights change ✓</span></div>
+        <div><span class="weights-badge badge-yes">Weights change ✓</span></div>
+        <div><span class="weights-badge badge-some">Sometimes changes</span></div>
+        <div><span class="weights-badge badge-no">Weights fixed</span></div>
+        <div><span class="weights-badge badge-no">Weights fixed</span></div>
+      </div>
+
+      <div class="timeline" style="margin-top:8px;align-items:start">
+        <div class="col-pretrain chips-col">
+          <div class="chip">Architecture design</div>
+          <div class="chip">Data pipeline</div>
+          <div class="chip">Tokenization</div>
+          <div class="chip">Vocabulary sizing</div>
+          <div class="chip">Compute scaling</div>
+        </div>
+        <div class="col-training chips-col">
+          <div class="chip">Gradient descent</div>
+          <div class="chip">Hyperparameters</div>
+          <div class="chip">RLHF</div>
+          <div class="chip">Attention mechanisms</div>
+          <div class="chip">Scaling laws</div>
+        </div>
+        <div class="col-post chips-col">
+          <div class="chip">Fine-tuning</div>
+          <div class="chip">Reinforcement fine-tuning (RFT)</div>
+          <div class="chip">Quantization</div>
+          <div class="chip">Distillation</div>
+          <div class="chip">RAFT</div>
+        </div>
+        <div class="col-inference chips-col">
+          <div class="chip">Speculative decoding</div>
+          <div class="chip">KV cache</div>
+          <div class="chip">Prompt caching</div>
+          <div class="chip">Batch inference</div>
+          <div class="chip">Temperature &amp; sampling</div>
+          <div class="chip">Inference latency (TTFT)</div>
+        </div>
+        <div class="col-runtime chips-col">
+          <div class="chip">Evals / LLM-as-Judge</div>
+          <div class="chip">A/B testing</div>
+          <div class="chip">Observability</div>
+          <div class="chip">Stateful agents</div>
+          <div class="chip">Guardrails</div>
+          <div class="chip">Context engineering</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lc-insight">
+      <p class="lc-insight-title">Key insight for procurement</p>
+      <p>When a vendor says their model is now <strong>40% faster</strong> or <strong>30% cheaper</strong>, ask: did the model weights change, or did something in the inference or runtime layer change? The answer tells you whether you're seeing a genuine capability advance or an engineering efficiency gain — both are valuable, but they're different things.</p>
+      <p>Speculative decoding, KV cache improvements, and better batching are all <strong>inference-time techniques</strong>. The underlying model is identical. The same question applies to cost reductions: prompt caching and batch inference can cut costs by 60–90% without touching the model at all. Vendors rarely volunteer this distinction.</p>
+    </div>
+
+    <div class="lc-legend">
+      <div class="lc-legend-item"><div class="lc-legend-dot" style="background:var(--slate)"></div>Pre-training</div>
+      <div class="lc-legend-item"><div class="lc-legend-dot" style="background:var(--purple)"></div>Training</div>
+      <div class="lc-legend-item"><div class="lc-legend-dot" style="background:var(--teal)"></div>Post-training</div>
+      <div class="lc-legend-item"><div class="lc-legend-dot" style="background:var(--accent)"></div>Inference</div>
+      <div class="lc-legend-item"><div class="lc-legend-dot" style="background:var(--amber)"></div>Production runtime</div>
+    </div>
+
+    <div class="lc-explainers">
+      <div class="lc-explainer col-pretrain">
+        <p class="lc-explainer-phase">Pre-training</p>
+        <h3 class="lc-explainer-h3">Building the model from scratch</h3>
+        <p class="lc-explainer-p">Decisions made here — architecture, data sources, vocabulary — are permanent. Changing them means rebuilding the model entirely. This is where labs like OpenAI, Anthropic, and Google spend billions.</p>
+      </div>
+      <div class="lc-explainer col-training">
+        <p class="lc-explainer-phase">Training</p>
+        <h3 class="lc-explainer-h3">Teaching the model to be useful</h3>
+        <p class="lc-explainer-p">The model learns from data through gradient descent, with hyperparameters controlling how. RLHF steers it toward helpfulness and safety. These choices shape the model's core capabilities and personality.</p>
+      </div>
+      <div class="lc-explainer col-post">
+        <p class="lc-explainer-phase">Post-training</p>
+        <h3 class="lc-explainer-h3">Refining for specific use</h3>
+        <p class="lc-explainer-p">Fine-tuning and RFT adapt a base model to a domain. Quantization and distillation compress it. These techniques sometimes change model weights — making them a middle ground between building and running.</p>
+      </div>
+      <div class="lc-explainer col-inference">
+        <p class="lc-explainer-phase">Inference</p>
+        <h3 class="lc-explainer-h3">Running the model efficiently</h3>
+        <p class="lc-explainer-p">Inference optimisation techniques — speculative decoding, KV cache, prompt caching — make the model faster and cheaper without changing what it knows. Most vendor "performance" claims live here.</p>
+      </div>
+      <div class="lc-explainer col-runtime">
+        <p class="lc-explainer-phase">Production runtime</p>
+        <h3 class="lc-explainer-h3">Measuring and governing in production</h3>
+        <p class="lc-explainer-p">Evals, observability, guardrails, and A/B testing happen here continuously. This is where quality is maintained over time — and where most enterprise AI deployments quietly fail without it.</p>
+      </div>
+    </div>
+
+    <div class="arch-footnote">Part of the AI Fluency Daily Digest — reference guides for enterprise AI literacy. Last updated May 2026.</div>
+
+  </div><!-- /lifecycle -->
 
   <!-- DEEP DIVES -->
   <div class="sec" id="sec-topics">
