@@ -202,6 +202,12 @@
       "f": "Day 17",
       "d": "Observability isn't just a technical concern — it's the mechanism that makes AI accountability real. Essential for regulated industries.",
       "p": "Explain AI observability as a governance and risk management tool for enterprise executives in regulated industries — what to monitor, why it matters, and what questions to ask vendors. 3 paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "How AI agent pricing actually works — and what to negotiate",
+      "f": "Day 58 · extended Q&A",
+      "d": "Enterprise software is undergoing a pricing identity crisis driven by AI agents. Per-seat models break when one agent replaces five humans. Consumption pricing creates unpredictable bills. Outcome-based pricing sounds ideal but requires defining 'success' before you sign.",
+      "p": "Explain the three AI agent pricing models — per-seat, consumption-based, and outcome-based — and give concrete guidance on how enterprise procurement teams should negotiate AI contracts in 2026. Include what to watch out for in flat-fee AELA deals, how to match pricing model to workload type, and what vendor incentive alignment actually looks like in practice. 3 paragraphs, no headers, no bullets."
     }
   ]
 }
