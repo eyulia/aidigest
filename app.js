@@ -251,7 +251,7 @@ function updateDomainBars(days) {
   CAT_ORDER.forEach(cat => { counts[cat] = 0; });
   days.forEach(d => {
     const cat = d.cat || 'Foundations';
-    if (counts[cat] !== undefined) counts[cat]++;
+    if (counts[cat] !== undefined) counts[cat] += (d.c ? d.c.length : 0);
   });
 
   const max = Math.max(...Object.values(counts), 1);
