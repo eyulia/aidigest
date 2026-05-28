@@ -155,7 +155,7 @@ function buildDayCard(d) {
 }
 
 /* ── CATEGORY ORDER & LABELS ── */
-const CAT_ORDER = ['Foundations', 'Architecture', 'Enterprise AI', 'Safety & Risk', 'Society & Law'];
+const CAT_ORDER = ['Foundations', 'Architecture', 'Enterprise AI', 'Safety & Risk', 'AI Philosophy & Values'];
 
 /* ── BUILD DAY CARDS grouped by category ── */
 function buildDays(days) {

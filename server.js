@@ -161,7 +161,7 @@ Rules:
   "Architecture" — technical systems and infrastructure (agents, RAG, transformers, inference, pipelines, protocols)
   "Enterprise AI" — business deployment, strategy, ROI, vendor decisions, operational patterns
   "Safety & Risk" — alignment, hallucination, red-teaming, guardrails, liability, benchmarking limitations
-  "Society & Law" — regulation, workforce, sovereignty, sustainability, policy`;
+  "AI Philosophy & Values" — ethics, values, regulation, workforce, sovereignty, sustainability, policy`;
 
   try {
     const upstream = await fetch('https://api.anthropic.com/v1/messages', {
