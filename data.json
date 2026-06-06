@@ -232,6 +232,12 @@
       "f": "Day 58 · extended Q&A",
       "d": "Enterprise software is undergoing a pricing identity crisis driven by AI agents. Per-seat models break when one agent replaces five humans. Consumption pricing creates unpredictable bills. Outcome-based pricing sounds ideal but requires defining 'success' before you sign.",
       "p": "Explain the three AI agent pricing models — per-seat, consumption-based, and outcome-based — and give concrete guidance on how enterprise procurement teams should negotiate AI contracts in 2026. Include what to watch out for in flat-fee AELA deals, how to match pricing model to workload type, and what vendor incentive alignment actually looks like in practice. 3 paragraphs, no headers, no bullets."
+    },
+    {
+      "t": "Why AI Consent Architecture Is Harder Than Cookie Consent",
+      "f": "Day 66",
+      "d": "Cookie consent solved a specific, bounded problem. AI consent — covering where data goes, whether it trains models, who can access outputs, and at what organisational level decisions are made — is structurally different. GDPR doesn't provide operational guidance here, and enterprises writing internal AI consent policy today are setting the de facto standard ahead of regulation.",
+      "p": "Microsoft is auto-installing Copilot across enterprise Microsoft 365 environments. How is AI consent architecture different from identity and access management — and can we just replicate the cookie consent model that browsers use? Explain why AI consent is structurally harder, where GDPR falls short of providing operational guidance, and what a mature enterprise AI consent model needs to cover across organisational policy, role-based configuration, and individual audit rights. 3 paragraphs, no headers, no bullets."
     }
   ]
 }
