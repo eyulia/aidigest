@@ -70,6 +70,20 @@ app.get('/api/data', (req, res) => {
   }
 });
 
+// ── GET /api/concepts ────────────────────────────────────────
+// Returns a lightweight list of all covered concept names.
+// Use this instead of /api/data to check for duplicates — much
+// smaller payload, always complete, never truncated.
+app.get('/api/concepts', (req, res) => {
+  try {
+    const data     = loadData();
+    const concepts = Object.keys(data.glossary);
+    res.json({ count: concepts.length, concepts });
+  } catch (err) {
+    res.status(500).json({ error: 'Could not read data file.' });
+  }
+});
+
 // ── POST /api/chat ──────────────────────────────────────────
 // Proxies a single Claude API call for the deep-dive feature.
 app.post('/api/chat', async (req, res) => {

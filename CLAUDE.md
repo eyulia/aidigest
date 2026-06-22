@@ -75,6 +75,13 @@ These apply whenever source content is pasted in — normalise before pushing:
 
 **Explore tab topics** — when adding a new entry to the `topics` array, keep `d` (description) to 2–3 sentences and ensure `p` (prompt) ends with "3 paragraphs, no headers, no bullets."
 
+## Checking covered concepts (avoid duplicates)
+Before proposing new concepts, fetch this endpoint — it returns only concept names, small enough to never be truncated:
+```
+GET https://eyulia-ai.up.railway.app/api/concepts
+```
+Returns `{ count, concepts[] }`. Do NOT fetch `/api/data` for this purpose — the file is too large and will be cut off.
+
 ## Deployment
 - Railway auto-deploys on every push to `main`
 - No build step — just `git add data.json && git commit && git push`
